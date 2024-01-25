@@ -5,7 +5,8 @@ import taskRoutes from './routes/task.js'
 import authRoutes from './routes/auth.js'
 import priorityRoutes from './routes/priority.js'
 import stateRoutes from './routes/state.js'
-import dotenv from 'dotenv'
+import './config.js'
+import { PORT } from './config.js'
 
 const app = express();
 app.set('view engine', 'ejs')
@@ -14,8 +15,6 @@ app.use(express.urlencoded({
 }))
 
 
-
-dotenv.config()
 app.use( cors() )
 app.use(express.json())
 
@@ -28,14 +27,9 @@ try {
     db.authenticate()
     console.log('Conexión exitosa a la base de datos');
 } catch (error) {
-    console.log(error);
-    console.log('Error al conectar con base de datos');
+    console.log('Error al conectar con base de datos', error);
 }
 
-app.get('/', (req, res) => {
-    res.send('Hola mundo');
-})
-
-app.listen(process.env.PORT, () => {
-    console.log(`Server online in port ${process.env.PORT}`);
+app.listen(PORT, () => {
+    console.log(`Server online in port ${PORT}`);
 })
