@@ -236,7 +236,7 @@ export const forgotPassword = async(req, res = response) => {
         id: user.id
        }, secret, {expiresIn: '5m'})
 
-       const link = `http://localhost:${process.env.PORT}/api/auth/reset-password/${user.id}/${token}`
+       const link = `https://taskmaster1-backend-production.up.railway.app/api/auth/reset-password/${user.id}/${token}`
 
        var transporter = nodemailer.createTransport({
          service: "gmail",
