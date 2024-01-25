@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import nodemailer from 'nodemailer';
 
 
+
 export const consultUserById = async(req, res = response) => {
     
     try {
@@ -86,12 +87,12 @@ export const login = async(req, res = response) => {
             }
         });
 
-        if ( !user ) {
-            return res.status(200).json({
-                ok: false,
-                msg: 'El correo o contraseña son incorrectos'
-            })
-        }
+        // if ( !user ) {
+        //     return res.status(200).json({
+        //         ok: false,
+        //         msg: 'El correo o contraseña son incorrectos'
+        //     })
+        // }
 
         //Confirmar contraseña encriptada
         const validPassword = bcrypt.compareSync( password, user.password)
