@@ -87,12 +87,12 @@ export const login = async(req, res = response) => {
             }
         });
 
-        // if ( !user ) {
-        //     return res.status(200).json({
-        //         ok: false,
-        //         msg: 'El correo o contraseña son incorrectos'
-        //     })
-        // }
+        if ( !user ) {
+            return res.status(200).json({
+                ok: false,
+                msg: 'El correo o contraseña son incorrectos'
+            })
+        }
 
         //Confirmar contraseña encriptada
         const validPassword = bcrypt.compareSync( password, user.password)
@@ -229,7 +229,7 @@ export const forgotPassword = async(req, res = response) => {
             })
         }
 
-       const secret = process.env.PRIVATE_KEY + user.password;
+       const secret = `${process.env.PRIVATE_KEY}` + user.password;
        
        const token = jwt.sign({
         email: user.email,
@@ -292,7 +292,7 @@ export const resetPassword = async(req, res = response) => {
         })
     }
 
-    const secret = process.env.PRIVATE_KEY + user.password;
+    const secret = `${process.env.PRIVATE_KEY}` + user.password;
 
     try {
         const verify = jwt.verify(token, secret)
@@ -328,7 +328,7 @@ export const resetPasswordValidate = async(req, res = response) => {
         })
     }
 
-    const secret = process.env.PRIVATE_KEY + user.password;
+    const secret = `${process.env.PRIVATE_KEY}`+ user.password;
 
     try {
         const verify = jwt.verify(token, secret)
