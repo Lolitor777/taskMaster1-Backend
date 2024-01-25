@@ -2,7 +2,7 @@ import { DataTypes } from "sequelize";
 import db from "../database/db.js";
 import Priority from './Priority.js'
 import State from './State.js'
-import User from "./user.js";
+import User from "./User.js";
 
 
 const Task = db.define('tb_task', {

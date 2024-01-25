@@ -1,6 +1,6 @@
 import { response } from "express";
 import bcrypt from 'bcryptjs';
-import User from "../models/user.js";
+import User from "../models/User.js";
 import generateJWT from '../helpers/jwt.js'
 import jwt from "jsonwebtoken";
 import nodemailer from 'nodemailer';
@@ -214,9 +214,7 @@ export const updatePassword = async(req, res = response) => {
 export const forgotPassword = async(req, res = response) => {
 
     const { email } = req.body
-
     try {
-
         const user = await User.findOne({
             where: {
                 email

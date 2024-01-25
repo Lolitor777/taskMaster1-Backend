@@ -2,7 +2,7 @@ import { request, response } from 'express';
 import Task from '../models/Task.js';
 import Priority from '../models/Priority.js';
 import State from '../models/State.js';
-import User from '../models/user.js';
+import User from '../models/User.js';
 
 
 export const consultAllTask = async(req, res = response) => {
