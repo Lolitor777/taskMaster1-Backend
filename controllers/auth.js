@@ -247,7 +247,7 @@ export const forgotPassword = async(req, res = response) => {
        });
 
        var mailOptions = {
-         from: "youremail@gmail.com",
+         from: "carvajal57685@gmail.com",
          to: user.email,
          subject: "Recupera tu contraseña *TaskMaster*",
          text: link,
