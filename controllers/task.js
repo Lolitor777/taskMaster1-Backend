@@ -88,7 +88,7 @@ export const consultPendingTask = async ( req, res = response ) => {
         })
 
         if (task.length < 1) {
-            return res.status(304).json({
+            return res.status(201).json({
                 task,
                 msg: 'No hay tareas pendientes'
             })
